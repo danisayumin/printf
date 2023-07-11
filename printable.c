@@ -41,7 +41,6 @@ int printf(const char *c)
 	else if (c == '%d')
 	{
 		int dec;
-
 		dec =(int)c;//n sei se ta correto revisar
 		//i = i *10 + (*str - '0')
 	}
@@ -63,7 +62,7 @@ int printf(const char *c)
 	}
 	else if (c == '%')
 	{
-		write(1, '%', 1)z;
+		write(1, '%', 1);
 	}
 	
 }
