@@ -1,10 +1,11 @@
-NAME = printf.a
+NAME = libftprintf.a
 
 CC = cc
 
 RM = rm -f
 
 SRCS = \
+		ft_printf.c
 
 FLAGS = -Wall -Werror -Wextra
 
