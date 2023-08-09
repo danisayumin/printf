@@ -1,19 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsayumi- <dsayumi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/26 20:58:52 by dsayumi-          #+#    #+#             */
-/*   Updated: 2023/08/08 21:20:19 by dsayumi-         ###   ########.fr       */
+/*   Created: 2023/05/26 22:23:14 by dsayumi-          #+#    #+#             */
+/*   Updated: 2023/08/08 20:52:58 by dsayumi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"ft_printf.h"
+#include	"printf.h"
 
-int	ft_putchar(char c)
+int	ft_putnbr(int n)
 {
-	write(1, &c, 1);
-	return (1);
+	long int	i;
+	int			j;
+
+	j = 0;
+	i = n;
+	if (i < 0)
+	{
+		ft_putchar('-');
+		i = -i;
+	}
+	if (i >= 10)
+		j += ft_putnbr(i / 10);
+	ft_putchar(i % 10 + '0');
+	return (i);
 }

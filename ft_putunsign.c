@@ -1,19 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putunsign.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsayumi- <dsayumi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/26 20:58:52 by dsayumi-          #+#    #+#             */
-/*   Updated: 2023/08/08 21:20:19 by dsayumi-         ###   ########.fr       */
+/*   Created: 2023/08/08 21:09:08 by dsayumi-          #+#    #+#             */
+/*   Updated: 2023/08/08 21:52:12 by dsayumi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include	"ft_printf.h"
 
-int	ft_putchar(char c)
+void	putunsign(unsigned int nbr)
 {
-	write(1, &c, 1);
-	return (1);
+	int	count;
+
+	count = 0;
+	if (nbr > 9)
+		count += ft_putnbr(nbr / 10);
+	return (count);
 }

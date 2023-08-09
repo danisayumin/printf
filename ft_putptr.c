@@ -1,19 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putptr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: dsayumi- <dsayumi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/26 20:58:52 by dsayumi-          #+#    #+#             */
-/*   Updated: 2023/08/08 21:20:19 by dsayumi-         ###   ########.fr       */
+/*   Created: 2023/08/08 20:42:24 by dsayumi-          #+#    #+#             */
+/*   Updated: 2023/08/08 21:17:09 by dsayumi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"ft_printf.h"
+#include "ft_printf.h"
 
-int	ft_putchar(char c)
+char	ft_putptr(unsigned long nbr, int i)
 {
-	write(1, &c, 1);
-	return (1);
+	int	count;
+
+	count = 0;
+	if (nbr == 0)
+	{
+		ft_putstr("(nil)");
+		return (5);
+	}
+	if (i == 0)
+	{
+		ft_putstr("0x");
+		count += 2;
+	}
+	if (nbr > 15)
+		count += ft_putptr(nbr / 16, ++i);
+	write(1, &"0123456789abcdef"[nbr % 16], 1);
+	return (count);
 }
