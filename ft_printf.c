@@ -6,7 +6,7 @@
 /*   By: dsayumi- <dsayumi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 21:30:11 by dsayumi-          #+#    #+#             */
-/*   Updated: 2023/08/17 21:54:00 by dsayumi-         ###   ########.fr       */
+/*   Updated: 2023/08/17 22:47:25 by dsayumi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,10 @@ int	read_params(const char *str, va_list vl)
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%')
+		{
+			i++;
 			convert_params((char *)str, i, vl);
+		}
 		else
 			ft_putchar(str[i]);
 		i++;
@@ -53,7 +56,7 @@ int	convert_params(char *str, int i, va_list vl)
 	count = 0;
 	if (str[i] == 'c')
 		count += ft_putchar(va_arg(vl, int));
-	else if (str[i]== 's')
+	else if (str[i] == 's')
 		count += ft_putstr(va_arg(vl, char *));
 	else if (str[i] == 'p')
 		count += ft_putptr(va_arg(vl, unsigned long), 0);
@@ -66,16 +69,6 @@ int	convert_params(char *str, int i, va_list vl)
 	else if (str[i] == 'X')
 		count += ft_puthex_upper(va_arg(vl, unsigned long));
 	else if (str[i] == '%')
-		count += ft_putchar(va_arg(vl, int));
+		return (1);
 	return (count);
-}
-
-#include <stdio.h>
-
-int	main(void)
-{
-	ft_printf("%d", 123);
-	printf("\n%d", 123);
-
-	return (0);
 }

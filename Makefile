@@ -1,34 +1,46 @@
-NAME = libftprintf.a
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: dsayumi- <dsayumi-@student.42.fr>          +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2023/08/17 22:10:43 by dsayumi-          #+#    #+#              #
+#    Updated: 2023/08/17 22:11:10 by dsayumi-         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
 
-CC = cc
+NAME		= libftprintf.a
+CC			= cc
+CFLAGS		= -Wall -Wextra -Werror
+INCS		= ft_printf.h
+SRCS		= ft_printf.c \
+			ft_putchar.c \
+			ft_puthex_lower.c \
+			ft_puthex_upper.c \
+			ft_putnbr.c \
+			ft_putptr.c \
+			ft_putstr.c \
+			ft_putunsign.c \
+			ft_strlen.c
+OBJS		= $(SRCS:.c=.o)
 
-RM = rm -f
+all: 		$(NAME)
 
-SRCS = \
-		ft_printf.c \
-		ft_putchar.c \
-		ft_puthex_lower.c \
-		ft_puthex_upper.c \
-		ft_putnbr.c \
-		ft_putptr.c \
-		ft_putstr.c \
-		ft_putunsign.c \
-		ft_strlen.c
+$(NAME):	$(OBJS) $(INCS)
+	ar -rcs	$(NAME) $(OBJS)
 
-FLAGS = -Wall -Werror -Wextra
+.c.o: 		
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
 
-INCLUDE = ./include
+bonus: all
 
-OBJS = $(SRCS: .c=.o)
-
-all: $(NAME)
-
-$(NAME): $(OBJS)
-		$(CC) $(FLAGS) -I $(INCLUDE) -c $(SRCS)
-		ar -rcs $(NAME) $(OBJS)
 clean:
-		$(RM) $(OBJS)
+	rm -f $(OBJS)
+
 fclean: clean
-		$(RM) $(NAME)
+	rm -f $(NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
