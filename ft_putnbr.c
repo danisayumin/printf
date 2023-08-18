@@ -6,11 +6,11 @@
 /*   By: dsayumi- <dsayumi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 22:23:14 by dsayumi-          #+#    #+#             */
-/*   Updated: 2023/08/08 20:52:58 by dsayumi-         ###   ########.fr       */
+/*   Updated: 2023/08/17 21:54:10 by dsayumi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"printf.h"
+#include	"ft_printf.h"
 
 int	ft_putnbr(int n)
 {

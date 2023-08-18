@@ -6,7 +6,7 @@
 /*   By: dsayumi- <dsayumi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 21:30:11 by dsayumi-          #+#    #+#             */
-/*   Updated: 2023/08/08 21:34:19 by dsayumi-         ###   ########.fr       */
+/*   Updated: 2023/08/17 21:54:00 by dsayumi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,43 +32,41 @@ int	ft_printf(const char *str, ...)
 
 int	read_params(const char *str, va_list vl)
 {
-	int	j;
+	int	i;
 
-	j = 0;
-	while (str[j] != '\0')
+	i = 0;
+	while (str[i] != '\0')
 	{
-		if (str[j] == '%')
-			convert_params(str[j + 1], vl);
+		if (str[i] == '%')
+			convert_params((char *)str, i, vl);
 		else
-		{
-			ft_putchar(str[j]);
-		}
-		j++;
+			ft_putchar(str[i]);
+		i++;
 	}
-	return (j);
+	return (i);
 }
 
-int	convert_params(char str, va_list vl)
+int	convert_params(char *str, int i, va_list vl)
 {
 	int	count;
 
 	count = 0;
-	if (str == 'c')
-		count += ft_putchar(va_arg(vl, char));
-	else if (str == 's')
+	if (str[i] == 'c')
+		count += ft_putchar(va_arg(vl, int));
+	else if (str[i]== 's')
 		count += ft_putstr(va_arg(vl, char *));
-	else if (str == 'p')
+	else if (str[i] == 'p')
 		count += ft_putptr(va_arg(vl, unsigned long), 0);
-	else if (str == 'd' || str == 'i')
+	else if (str[i] == 'd' || str[i] == 'i')
 		count += ft_putnbr(va_arg(vl, int));
-	else if (str == 'u')
+	else if (str[i] == 'u')
 		count += ft_putunsign(va_arg(vl, unsigned int));
-	else if (str == 'x')
+	else if (str[i] == 'x')
 		count += ft_puthex_low(va_arg(vl, unsigned long));
-	else if (str == 'X')
+	else if (str[i] == 'X')
 		count += ft_puthex_upper(va_arg(vl, unsigned long));
-	else if (str == '%')
-		count += ft_putchar(va_arg(vl, char));
+	else if (str[i] == '%')
+		count += ft_putchar(va_arg(vl, int));
 	return (count);
 }
 
@@ -76,9 +74,8 @@ int	convert_params(char str, va_list vl)
 
 int	main(void)
 {
-	int c = 0;
-	c = ft_printf("%%");
-	printf("\n%i\n", c);
-	c = printf("%%");
-	printf("\n%i", c);
+	ft_printf("%d", 123);
+	printf("\n%d", 123);
+
+	return (0);
 }
