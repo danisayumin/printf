@@ -6,7 +6,7 @@
 /*   By: dsayumi- <dsayumi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/26 22:23:14 by dsayumi-          #+#    #+#             */
-/*   Updated: 2023/08/17 21:54:10 by dsayumi-         ###   ########.fr       */
+/*   Updated: 2023/08/18 21:31:56 by dsayumi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,15 +17,16 @@ int	ft_putnbr(int n)
 	long int	i;
 	int			j;
 
-	j = 0;
+	j = 1;
 	i = n;
 	if (i < 0)
 	{
 		ft_putchar('-');
 		i = -i;
+		j++;
 	}
 	if (i >= 10)
 		j += ft_putnbr(i / 10);
 	ft_putchar(i % 10 + '0');
-	return (i);
+	return (j);
 }

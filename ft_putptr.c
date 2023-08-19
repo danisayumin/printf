@@ -6,7 +6,7 @@
 /*   By: dsayumi- <dsayumi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/08/08 20:42:24 by dsayumi-          #+#    #+#             */
-/*   Updated: 2023/08/17 22:29:40 by dsayumi-         ###   ########.fr       */
+/*   Updated: 2023/08/18 21:26:16 by dsayumi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ char	ft_putptr(unsigned long nbr, int i)
 {
 	int	count;
 
-	count = 0;
+	count = 1;
 	if (nbr == 0)
 	{
 		ft_putstr("(nil)");

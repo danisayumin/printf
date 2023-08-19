@@ -6,7 +6,7 @@
 /*   By: dsayumi- <dsayumi-@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 21:30:11 by dsayumi-          #+#    #+#             */
-/*   Updated: 2023/08/17 22:47:25 by dsayumi-         ###   ########.fr       */
+/*   Updated: 2023/08/18 21:23:43 by dsayumi-         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,20 +33,22 @@ int	ft_printf(const char *str, ...)
 int	read_params(const char *str, va_list vl)
 {
 	int	i;
+	int	count;
 
 	i = 0;
+	count = 0;
 	while (str[i] != '\0')
 	{
 		if (str[i] == '%')
 		{
 			i++;
-			convert_params((char *)str, i, vl);
+			count += convert_params((char *)str, i, vl);
 		}
 		else
-			ft_putchar(str[i]);
+			count += ft_putchar(str[i]);
 		i++;
 	}
-	return (i);
+	return (count);
 }
 
 int	convert_params(char *str, int i, va_list vl)
@@ -69,6 +71,6 @@ int	convert_params(char *str, int i, va_list vl)
 	else if (str[i] == 'X')
 		count += ft_puthex_upper(va_arg(vl, unsigned long));
 	else if (str[i] == '%')
-		return (1);
+		count += ft_putchar('%');
 	return (count);
 }
